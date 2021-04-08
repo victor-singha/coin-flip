@@ -1,7 +1,7 @@
 #! /bin/bash
 headcount=0
 tailcount=0
-for ((i=1;i<50;i++))
+while [ $headcount -ne 21 -a $tailcount -ne 21 ]
 do
 	result=$((RANDOM%2))
 	if [ $result -eq 0 ]
@@ -13,3 +13,14 @@ do
 done
 echo "heads: " $headcount
 echo "tails: " $tailcount
+headwin=$((headcount-tailcount))
+tailwin=$((tailcount-headcount))
+if [ $headcount -gt $tailcount ]
+then
+	echo Head wins by $headwin
+elif [ $tailcount -gt $headcount ]
+then
+	echo Tail wins by $tailwin
+else
+	echo Tie
+fi
